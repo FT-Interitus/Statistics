@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="desktop-1.01">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../RoboControl/desktop/build/libs/desktop-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
