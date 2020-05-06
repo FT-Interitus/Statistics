@@ -8,6 +8,7 @@ import de.ft.interitus.Block.BlockVar;
 import de.ft.interitus.ProgrammingSpace;
 import de.ft.interitus.UI.MenuBar;
 import de.ft.interitus.data.user.experience.ExperienceVar;
+import de.ft.interitus.plugin.Configuration;
 import de.ft.interitus.plugin.Plugin;
 import de.ft.interitus.plugin.PluginManagerHandler;
 import de.ft.interitus.plugin.PluginRegister;
@@ -28,8 +29,8 @@ PluginRegister pluginRegister =new PluginRegister();
     public boolean register() {
         System.out.println("blubblubhallopluginpipikaka");
 
-        pluginRegister.config("name","statistics");
-        pluginRegister.config("version","9.0");
+        pluginRegister.config(Configuration.name,"statistics");
+        pluginRegister.config(Configuration.version,"9.0");
         PluginManagerHandler.register(pluginRegister);
         Menu menue=new Menu("Statistics");
         menue.addItem(new MenuItem("open Statistics"));

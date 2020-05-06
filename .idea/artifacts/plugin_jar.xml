@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="plugin:jar">
-    <output-path>$PROJECT_DIR$/../../GitHub/RoboControll/RoboControl/plugins</output-path>
+    <output-path>$PROJECT_DIR$/../RoboControl/plugins</output-path>
     <root id="archive" name="plugin.jar">
       <element id="module-output" name="statistics" />
     </root>
