@@ -1,5 +1,6 @@
 package de.ft.statistics;
 
+import com.badlogic.gdx.Input;
 import com.kotcrab.vis.ui.widget.Menu;
 import com.kotcrab.vis.ui.widget.MenuItem;
 import com.kotcrab.vis.ui.widget.VisLabel;
@@ -7,12 +8,14 @@ import com.kotcrab.vis.ui.widget.VisTable;
 import de.ft.interitus.Block.BlockVar;
 import de.ft.interitus.ProgrammingSpace;
 import de.ft.interitus.UI.MenuBar;
+import de.ft.interitus.UI.shortcut.ShortCut;
+import de.ft.interitus.UI.shortcut.SpecialKeys;
 import de.ft.interitus.data.user.experience.ExperienceVar;
 import de.ft.interitus.plugin.Configuration;
 import de.ft.interitus.plugin.Plugin;
 import de.ft.interitus.plugin.PluginManagerHandler;
 import de.ft.interitus.plugin.PluginRegister;
-import de.ft.interitus.roboconnection.arduino.BurnProgramm;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -27,7 +30,7 @@ PluginRegister pluginRegister =new PluginRegister();
 
     @Override
     public boolean register() {
-        System.out.println("blubblubhallopluginpipikaka");
+
 
         pluginRegister.config(Configuration.name,"statistics");
         pluginRegister.config(Configuration.version,"9.0");
@@ -41,6 +44,7 @@ PluginRegister pluginRegister =new PluginRegister();
        menue.addItem(blockanzahl);
        menue.addItem(stunden);
        PluginManagerHandler.addMenuEntry(menue);
+
 
         return true;
 
