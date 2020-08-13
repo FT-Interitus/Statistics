@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Statistics:jar">
-    <output-path>$PROJECT_DIR$/../Interitus/Interitus/plugins</output-path>
-    <root id="archive" name="plugin.jar">
+    <output-path>$USER_HOME$/.itd/plugins</output-path>
+    <root id="archive" name="Statistics.itpl">
       <element id="module-output" name="statistics" />
     </root>
   </artifact>
