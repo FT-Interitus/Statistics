@@ -1,89 +1,56 @@
-package de.ft.statistics;
+package de.ft.statistics
 
-import com.kotcrab.vis.ui.widget.Menu;
-import com.kotcrab.vis.ui.widget.MenuItem;
+import com.badlogic.gdx.graphics.Texture
+import com.kotcrab.vis.ui.widget.Menu
+import com.kotcrab.vis.ui.widget.MenuItem
+import de.ft.interitus.Var
+import de.ft.interitus.datamanager.programmdata.experience.ExperienceVar
+import de.ft.interitus.plugin.Plugin
+import de.ft.interitus.plugin.PluginAssetManager
+import de.ft.interitus.plugin.ProgramRegistry
 
-import de.ft.interitus.Programm;
-import de.ft.interitus.Var;
-import de.ft.interitus.datamanager.programmdata.experience.ExperienceVar;
-import de.ft.interitus.plugin.*;
+class Main : Plugin {
+    var id = 0
+    var texture: Texture? = null
+    var blockanzahl = MenuItem("Blöcke: ")
+    var wireanzahl = MenuItem("Wires: ")
+    var stunden = MenuItem("stunden: ")
 
-
-
-public class Main implements Plugin {
-
-    MenuItem blockanzahl = new MenuItem("Blöcke: ");
-    MenuItem wireanzahl = new MenuItem("Wires: ");
-    MenuItem stunden = new MenuItem("stunden: ");
-
-    @Override
-    public boolean register() {
-
-
-
-        Menu menue = new Menu("Statistics");
-        menue.addItem(new MenuItem("open Statistics"));
-        blockanzahl.setDisabled(true);
-        wireanzahl.setDisabled(true);
-        stunden.setDisabled(true);
-        menue.addItem(wireanzahl);
-        menue.addItem(blockanzahl);
-        menue.addItem(stunden);
-        PluginGateway.addMenuEntry(menue,this);
-
-
-        return true;
-
+    override fun register(registry: ProgramRegistry): Boolean {
+        val menue = Menu("Statistics")
+        menue.addItem(MenuItem("open Statistics"))
+        blockanzahl.isDisabled = true
+        wireanzahl.isDisabled = true
+        stunden.isDisabled = true
+        menue.addItem(wireanzahl)
+        menue.addItem(blockanzahl)
+        menue.addItem(stunden)
+        registry.addMenuEntry(menue, this)
+        id = registry.loadAsset("test.png", this)
+        registry.addPluginRender(this) { spriteBatch, spriteBatch1, shapeRenderer, shapeRenderer1 ->
+            spriteBatch.begin()
+            spriteBatch.end()
+        }
+        return true
     }
 
-    @Override
-    public boolean stop() {
-        return false;
+    override fun init(pluginAssetManager: PluginAssetManager): Boolean {
+        texture = pluginAssetManager.collectTextureAsset(id)
+        return false
     }
 
-    @Override
-    public boolean run() {
-
-
+    override fun run(): Boolean {
         try {
             try {
-                blockanzahl.setText("Blöcke: " + Var.openprojects.get(Var.openprojectindex).blocks.size());
-                wireanzahl.setText("Wires: " + Var.openprojects.get(Var.openprojectindex).wires.size());
-            }catch (IndexOutOfBoundsException e) {
-                blockanzahl.setText("Blöcke: " + "0");
-                wireanzahl.setText("Wires: " + "0");
-
+                blockanzahl.text = "Blöcke: " + Var.openprojects[Var.openprojectindex].blocks.size
+                wireanzahl.text = "Wires: " + Var.openprojects[Var.openprojectindex].wires.size
+            } catch (e: IndexOutOfBoundsException) {
+                blockanzahl.text = "Blöcke: " + "0"
+                wireanzahl.text = "Wires: " + "0"
             }
-            stunden.setText("stunden: " + Math.round(ExperienceVar.programmtimeinhoures));
-        } catch (NoSuchFieldError e) {
-
+            stunden.text = "stunden: " + Math.round(ExperienceVar.programmtimeinhoures)
+        } catch (e: NoSuchFieldError) {
         }
-        return true;
+        return true
     }
-
-    @Override
-    public String getName() {
-        return "Statistics";
-    }
-
-    @Override
-    public double getVersion() {
-        return 1.0;
-    }
-
-    @Override
-    public String getDescription() {
-        return "Dieses Plugin zeigt dir Statistiken an";
-    }
-
-    @Override
-    public String getLongDescription() {
-        return "Es werden die benutzen Blöcke, die Wires und die verbrachten Stunden im Programm angezeigt";
-    }
-
-    @Override
-    public String getAuthor() {
-        return "FT-Interitus";
-    }
-
 }

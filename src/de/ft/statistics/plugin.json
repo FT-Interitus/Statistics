@@ -1,0 +1,9 @@
+{
+  "name": "Statistics",
+  "domain": "de.ft.statistics",
+  "version": "1.0",
+  "description": "Shows Statistics",
+  "author": "Felix & Tim",
+  "detailed_description": "Shows Statistics about the Project",
+  "required-plugins": []
+}
